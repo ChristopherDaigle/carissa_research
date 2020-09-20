@@ -14,12 +14,12 @@ def hello_world():
 
 @app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 
-@app.route("/questions")
+@app.route("/exam")
 def questions():
-    return render_template('questions.html', posts=post)
+    return render_template('questions.html', posts=post, title='Exam')
 
 
 if __name__ == '__main__':

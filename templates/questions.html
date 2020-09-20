@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
+
+<script type="text/javascript">
+let choices = [];
+let radios = document.getElementsByClassName("my-radio");
+
+for (let radio of radios) {
+  radio.addEventListener("change", (event) => {
+    choices.push(event.target.id);
+    document.getElementById("output").innerHTML = choices;
+  });
+}
+</script>
+
     {% for post in posts %}
         <h1>Question {{ post.Number }}</h1>
         <h2> {{ post.Question }}</h2>
             {% for choice in post.Choices %}
     <form>
-                <input type="radio" name="choice" id="{{ post.Number }}{{ choice[0] }}" value="{{ choice[0] }}"> {{ choice[1] }}</input><br>
+                <input type="radio" class="my-radio" name="choice" id="{{ post.Number }}{{ choice[0] }}" value="{{ choice[0] }}"> {{ choice[1] }}</input><br>
             {% endfor %}
+        <p id="output">{{ choices }}</p>
     </form>
     {% endfor %}
-</body>
-</html>
+{% endblock content %}
