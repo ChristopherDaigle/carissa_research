@@ -22,7 +22,7 @@ def questions():
     return render_template('questions.html', posts=post, title='Exam')
 
 
-@app.route('/receive', methods = ['POST'])
+@app.route('/receive', methods=['POST'])
 def receive():
     data = request.json
     print("I received %s" % str(data))
