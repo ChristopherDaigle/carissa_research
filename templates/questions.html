@@ -13,7 +13,10 @@
             {% endfor %}
     </form>
     {% endfor %}
-<p id="output"></p>
+<!--Displays JSON of selections-->
+<!--Variable is called `choices` need to submit this "form" to my database-->
+<!--<p id="output"></p>-->
+<!--Include button for form submit-->
 
 <script type="text/javascript">
 let choices = [];
@@ -21,8 +24,8 @@ let radios = document.getElementsByClassName("my-radio");
 
 for (let radio of radios) {
   radio.addEventListener("change", (event) => {
-    choices.push(event.target.id);
-    document.getElementById("output").innerHTML = choices;
+    choices.push({selected_id:event.target.id, timestamp:Date.now()});
+    document.getElementById("output").innerHTML = JSON.stringify(choices);
   });
 }
 </script>
